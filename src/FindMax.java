@@ -60,9 +60,9 @@ public class FindMax {
                     System.out.println();
                 }
             } else if (type.equals("maxValue")) {
-                max = findMaxValueInTheMatrix(array, "max");
-                rowOfMaxValue = findMaxValueInTheMatrix(array, "row");
-                columnOfMaxValue = findMaxValueInTheMatrix(array, "column");
+                max = maxValue(array, "max");
+                rowOfMaxValue = maxValue(array, "row");
+                columnOfMaxValue = maxValue(array, "column");
                 System.out.print("Maximum value in the matrix: " + max + " at [" + rowOfMaxValue + "][" + columnOfMaxValue + "]");
             }
         } catch (Exception ex) {
@@ -70,43 +70,29 @@ public class FindMax {
         }
     }
 
-    public static int findMaxValueInTheMatrix(int[][] array, String type) {
+    public static int maxValue(int[][] array, String type) {
         int max = array[0][0];
         int rowIndex = 0;
         int columnIndex = 0;
         int result = 0;
         try {
+            for (int rows = 0; rows < array.length; rows++) {
+                for (int columns = 0; columns < array[rows].length; columns++) {
+                    if (max < array[rows][columns]) {
+                        max = array[rows][columns];
+                        rowIndex = rows;
+                        columnIndex = columns;
+                    }
+                }
+            }
             switch (type) {
                 case "max":
-                    for (int rows = 0; rows < array.length; rows++) {
-                        for (int columns = 0; columns < array[rows].length; columns++) {
-                            if (max < array[rows][columns]) {
-                                max = array[rows][columns];
-                            }
-                        }
-                    }
                     result = max;
                     break;
                 case "row":
-                    for (int rows = 0; rows < array.length; rows++) {
-                        for (int columns = 0; columns < array[rows].length; columns++) {
-                            if (max < array[rows][columns]) {
-                                max = array[rows][columns];
-                                rowIndex = rows;
-                            }
-                        }
-                    }
                     result = rowIndex;
                     break;
                 case "column":
-                    for (int rows = 0; rows < array.length; rows++) {
-                        for (int columns = 0; columns < array[rows].length; columns++) {
-                            if (max < array[rows][columns]) {
-                                max = array[rows][columns];
-                                columnIndex = columns;
-                            }
-                        }
-                    }
                     result = columnIndex;
                     break;
             }
