@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class FindMax {
+    static Scanner sc = new Scanner(System.in);
 
     public static int sizeMatrix(String type) {
-        Scanner sc = new Scanner(System.in);
         int rows, columns;
         int result = 0;
         try {
@@ -35,7 +35,6 @@ public class FindMax {
     }
 
     public static void addValuesToMatrix(int[][] array) {
-        Scanner sc = new Scanner(System.in);
         try {
 
             for (int rows = 0; rows < array.length; rows++) {
